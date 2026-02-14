@@ -5,3 +5,13 @@
   src: url("assets/fonts/Roboto-Regular.woff2") format("woff2");
   font-display: swap;
 }
+
+@font-face {
+  font-family: "GreatVibes";
+  src: url("assets/fonts/GreatVibes-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@theme {
+  --background-image-hero: url("./assets/images/title_screen.webp");
+}
