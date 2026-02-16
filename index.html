@@ -9,23 +9,21 @@
     <script type="module" src="src/main.ts" defer></script>
   </head>
   <body class="min-h-svh grid">
-    <main>
-      <section class="h-full content-center bg-hero bg-cover bg-no-repeat bg-center">
+    <main class="bg-hero bg-cover bg-no-repeat bg-center">
+      <section id="menu" class="h-full content-center" hidden>
         <div id="titleScreen" class="text-center">
           <h1
-            class="bg-linear-to-b from-white via-white to-emerald-400 bg-clip-text text-transparent drop-shadow-lg font-['GreatVibes'] font-semibold text-center text-[5.625rem] md:text-9xl p-3">
+            class="bg-linear-to-b from-white via-white to-emerald-400 bg-clip-text text-transparent drop-shadow-lg font-['GreatVibes'] font-semibold text-center text-[5.625rem] md:text-9xl mb-3 p-3">
             Blackjack
           </h1>
 
-          <button
-            type="button"
-            class="bg-[#2c6d54] rounded-lg text-indigo-50 text-xl shadow-md shadow-black/90 uppercase transition-all duration-300 active:translate-y-1 active:shadow-none tracking-wide cursor-pointer px-14 py-2">
+          <button id="startGame" type="button" class="relative bg-[#2c6d54] rounded-lg text-indigo-50 text-xl shadow-md shadow-black/90 uppercase tracking-wide cursor-pointer px-14 py-2">
             Play
           </button>
-
-          <div id="box" class="bg-red-600/90 w-25 aspect-square rounded-md"></div>
         </div>
       </section>
+
+      <section id="game" class="h-full"></section>
     </main>
   </body>
 </html>
