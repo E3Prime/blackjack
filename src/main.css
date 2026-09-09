@@ -14,4 +14,9 @@
 
 @theme {
   --background-image-hero: url("./assets/images/title_screen.webp");
+  --background-image-table: radial-gradient(circle at 50% 50%, #1a2f24 0%, #0a130f 100%);
+  --color-primary: #0f5132;
+  --color-secondary: #d4af37;
+  --color-tertiary: #198754;
+  --color-neutral: #f8f9fa;
 }

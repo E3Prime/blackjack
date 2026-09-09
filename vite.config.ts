@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [tailwindcss()],
-  base: "/blackjack/",
+  base: "/21/",
   server: {
     port: 8080,
   },
