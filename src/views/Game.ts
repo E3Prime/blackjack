@@ -1,16 +1,13 @@
+import {gsap} from "gsap";
+
 export function renderGame(): string {
   return `
-      <section class="aspect-video bg-black/60 backdrop-blur-sm mx-auto max-w-11/12 h-full rounded-lg p-2 flex flex-col gap-2">
+      <section class="game aspect-video bg-black/60 backdrop-blur-sm mx-auto max-w-11/12 h-full rounded-lg p-2 flex flex-col gap-2">
         <div class="text-neutral flex justify-between">
           <button type="button" id="btn-back" class="flex items-center rounded-full px-3 py-1.5 bg-gray-600/75 gap-1.5">
             <img src="src/assets/images/back_icon.svg" alt="Back Icon" />
             Back
           </button>
-
-          <p class="flex items-center rounded-full px-3 py-1.5 bg-gray-600/75 gap-1.5">
-            <img src="src/assets/images/timer.svg" alt="Timer Icon" />
-            <span>00:14</span>
-          </p>
 
           <p class="flex items-center rounded-full px-3 py-1.5 bg-gray-600/75 gap-1.5">
             <img src="src/assets/images/wallet.svg" alt="Money Icon" />
@@ -36,15 +33,30 @@ export function renderGame(): string {
 
         <div class="flex justify-between text-neutral">
           <span>Select Chip Value</span>
-          <p>Current Bet: <span>$19000</span></p>
+          <p>Current Bet: <span>$9000</span></p>
         </div>
-        <div class="grid grid-cols-4 text-neutral gap-1.5">
-          <button type="button" class="active rounded-lg py-2 font-semibold">$25</button>
-          <button type="button" class="bg-gray-600/75 rounded-lg py-2 font-semibold">$100</button>
-          <button type="button" class="bg-gray-600/75 rounded-lg py-2 font-semibold">$500</button>
-          <button type="button" class="bg-gray-600/75 rounded-lg py-2 font-semibold">$1K</button>
+        <div id="betting-controls" class="grid grid-cols-4 text-neutral gap-1.5">
+          <label class="bg-gray-600/75 rounded-lg py-2 font-semibold text-center cursor-pointer transition-all has-checked:bg-emerald-600 has-checked:ring-2 has-checked:ring-emerald-400">
+            <input type="radio" name="chipChoice" class="sr-only" checked value="25" />
+            $25
+          </label>
+          
+          <label class="bg-gray-600/75 rounded-lg py-2 font-semibold text-center cursor-pointer transition-all has-checked:bg-emerald-600 has-checked:ring-2 has-checked:ring-emerald-400">
+            <input type="radio" name="chipChoice" class="sr-only" value="100" />
+            $100
+          </label>
+
+          <label class="bg-gray-600/75 rounded-lg py-2 font-semibold text-center cursor-pointer transition-all has-checked:bg-emerald-600 has-checked:ring-2 has-checked:ring-emerald-400">
+            <input type="radio" name="chipChoice" class="sr-only" value="500" />
+            $500
+          </label>
+
+          <label class="bg-gray-600/75 rounded-lg py-2 font-semibold text-center cursor-pointer transition-all has-checked:bg-emerald-600 has-checked:ring-2 has-checked:ring-emerald-400">
+            <input type="radio" name="chipChoice" class="sr-only" value="1000" />
+            $1K
+          </label>
         </div>
-        <div class="grid grid-cols-3 gap-3 text-center text-neutral" hidden>
+        <div id="action-controls" class="grid grid-cols-3 gap-3 text-center text-neutral" hidden>
           <button type="button" class="bg-gray-600/75 rounded-lg py-2">
             <img src="src/assets/images/hit.svg" alt="Plus Icon" class="mx-auto" />
             Hit
@@ -58,7 +70,7 @@ export function renderGame(): string {
             Hit
           </button>
         </div>
-        <button type="button" class="bg-secondary rounded-lg flex items-center justify-center gap-1 py-3 cursor-pointer">
+        <button id="deal-btn" type="button" class="bg-secondary rounded-lg flex items-center justify-center gap-1 py-3 cursor-pointer">
           <img src="src/assets/images/die.svg" alt="Die Icon" />
           DEAL ME IN
         </button>
@@ -67,6 +79,21 @@ export function renderGame(): string {
 }
 
 export function setupGameEvents(onNavigate: (view: "MENU" | "GAME") => void) {
+  let credits = 9000;
+
   const backBtn = document.getElementById("btn-back") as HTMLButtonElement;
+  const dealBtn = document.getElementById("deal-btn") as HTMLButtonElement;
+  const bettingControls = document.getElementById("betting-controls") as HTMLDivElement;
+  const actionControls = document.getElementById("action-controls") as HTMLDivElement;
+
+  gsap.fromTo(".game", {opacity: 0}, {opacity: 1, duration: 1, ease: "power2.out"});
+
   backBtn.addEventListener("click", () => onNavigate("MENU"));
+  dealBtn.addEventListener("click", () => {
+    bettingControls.hidden = true;
+    actionControls.hidden = false;
+    beginGame();
+  });
 }
+
+function beginGame() {}

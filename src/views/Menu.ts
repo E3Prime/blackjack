@@ -22,18 +22,12 @@ export function renderMenu(): string {
           </div>
         </div>
       </section> 
-      <div class="box bg-linear-to-r from-indigo-500 to-purple-600 p-6 rounded-lg w-4 aspect-square"></div>
     `;
 }
 
 export function setupMenuEvents(onNavigate: (view: "MENU" | "GAME") => void) {
   const dealButton = document.getElementById("play-btn") as HTMLButtonElement;
+  const menuSection = dealButton.parentElement as HTMLElement;
   dealButton.addEventListener("click", () => onNavigate("GAME"));
-  const box = document.querySelector(".box") as HTMLDivElement;
-  console.log(box);
-  gsap.to(box, {
-    x: 300,
-    rotation: 360,
-    duration: 2,
-  });
+  gsap.fromTo(menuSection, {yPercent: -100, opacity: 0}, {yPercent: 0, opacity: 1, duration: 1, ease: "power2.out"});
 }
