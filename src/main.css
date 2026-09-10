@@ -20,3 +20,8 @@
   --color-tertiary: #198754;
   --color-neutral: #f8f9fa;
 }
+
+.active {
+  background-color: goldenrod;
+  color: #000000;
+}
